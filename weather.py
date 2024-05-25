@@ -38,7 +38,7 @@ def get_weather(city):
         final =  [city, country, temp_kelvin, temp_celsius, weather1]
         return final
     else:
-        print("NO CONTENT FOUND")
+        print("NOTHING WAS FOUND")
 
 
 
