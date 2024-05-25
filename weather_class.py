@@ -15,7 +15,7 @@ api_key = config['gfg']['api']
 url = "https://api.openweathermap.org/data/2.5/weather"
 
 #image for sun_rise
-sun_rise_gif = "/Users/ceo/Desktop/Weather_App_Tkinter/images_sun/1f305.gif"
+sun_rise_gif = "images_sun/1f305.gif"
 
 
 class WeatherApp():
@@ -85,9 +85,3 @@ class WeatherApp():
         else:
             messagebox.showerror("Error", "Cannot Find {}".format(city))
 
-
-
-if __name__ == "__main__":
-    root = Tk()
-    weather_app = WeatherApp(root)
-    root.mainloop()
