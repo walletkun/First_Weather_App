@@ -13,10 +13,12 @@ url = f"https://api.openweathermap.org/data/2.5/weather"
 
 #Day images
 sun_rise_gif = "/Users/ceo/Desktop/Weather_App_Tkinter/images_sun/1f305.gif"
-
-open_image = Image.open(sun_rise_gif)
-
-frames = open_image.n_frames
+try:
+    open_image = Image.open(sun_rise_gif)
+    img = ImageTk.PhotoImage(open_image)
+except Exception as e:
+    print(f"Error loading image: {e}")
+    img = None
 
 #Getting the weather info in given city
 def get_weather(city):
@@ -81,6 +83,13 @@ temperature_label.pack()
 
 weather_label = Label(app, text='')
 weather_label.pack()
+
+
+if img:
+    image_label = Label(app, image=img)
+    image_label.image = img  # Keep a reference to the image
+    image_label.pack()
+
 
 app.mainloop()
 
