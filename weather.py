@@ -17,6 +17,7 @@ sun_rise_gif = "/Users/ceo/Desktop/Weather_App_Tkinter/images_sun/1f305.gif"
 open_image = Image.open(sun_rise_gif)
 
 frames = open_image.n_frames
+
 #Getting the weather info in given city
 def get_weather(city):
 
