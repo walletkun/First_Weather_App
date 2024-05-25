@@ -1,8 +1,10 @@
 from configparser import ConfigParser 
 import requests 
+import json
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
+import math
 
 
 #Converting the app into class for easier instantiation
@@ -58,13 +60,14 @@ class WeatherApp():
         result = requests.get(url, params=params)
 
         if result:
-            json = result.json()
-            city = json['name']
-            country = json['sys']['country']
-            temp_kelvin = json['main']['temp']
+            json_response = result.json()
+            print(json.dumps(json_response, indent=4))
+            city = json_response['name']
+            country = json_response['sys']['country']
+            temp_kelvin = json_response['main']['temp']
             temp_fahrenheit = ((temp_kelvin - 273.15) * 9/5) + 32
-            weather1 = json['weather'][0]['main']
-            final = [city, country, temp_kelvin, temp_fahrenheit, weather1]
+            weather1 = json_response['weather'][0]['description']
+            final = [city, country, temp_kelvin, math.floor(temp_fahrenheit), weather1.capitalize()]
             return final
         else:
             print("NOTHING WAS FOUND")
@@ -76,7 +79,7 @@ class WeatherApp():
 
         if weather:
             self.location_lbl['text'] = "{}, {}".format(weather[0], weather[1])
-            self.temperature_label['text'] = str(weather[3]) + " Degree Fahrenheit"
+            self.temperature_label['text'] = str(weather[3]) + "° Fahrenheit"
             self.weather_label['text'] = weather[4]
 
         else:
