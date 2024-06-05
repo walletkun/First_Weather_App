@@ -1,6 +1,5 @@
 from tkinter import Tk, Label
 from PIL import Image, ImageTk
-from weather_class import AnimateGIF
 
 def test_image(path):
     try:
